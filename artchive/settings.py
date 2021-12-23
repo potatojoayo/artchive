@@ -28,6 +28,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CORS_ORIGIN_WHITELIST = ['http://localhost:3000', 'http://127.0.0.1:3000']
+CORS_ALLOW_CREDENTIALS = True
+
 
 # Application definition
 
@@ -47,7 +50,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_auth',
     'django_filters',
-    'crispy_forms'
+    'crispy_forms',
+    'corsheaders'
 ]
 
 AUTH_USER_MODEL = 'user.User'
@@ -80,6 +84,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware'
 ]
 
 ROOT_URLCONF = 'artchive.urls'

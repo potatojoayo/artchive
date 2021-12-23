@@ -3,8 +3,8 @@ import requests
 import re
 
 
-def url(lastname):
-    return 'https://www.wga.hu/cgi-bin/search.cgi?author={}&time=any&school=any&form=any&type=any&title=&comment=&location=&from=0&max=1000&format=5'.format(lastname)
+def url(last_name):
+    return 'https://www.wga.hu/cgi-bin/search.cgi?author={}&title=&comment=&time=any&school=any&form=any&type=any&location=&from=1&max=1000&format=5'.format(last_name)
 
 
 class Piece:
@@ -70,3 +70,6 @@ def get_works(last_name):
             piece = Piece(image, name, info, start_year, finish_year, location)
             works.append(piece)
     return works
+
+
+get_works('gogh')

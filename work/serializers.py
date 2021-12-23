@@ -6,13 +6,15 @@ from like.serializers import LikeSerializer
 
 class WorkSerializer(serializers.ModelSerializer):
 
-    artist = serializers.SerializerMethodField()
+    artist = serializers.StringRelatedField()
 
     class Meta:
 
         model = Work
         fields = '__all__'
 
+    '''
     def get_artist(self, instance):
         from artist.serializers import ArtistSerializer
         return ArtistSerializer(instance.artist).data
+'''

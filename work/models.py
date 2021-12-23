@@ -15,6 +15,8 @@ class Work(models.Model):
     info = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
     image = models.CharField(max_length=255, null=False)
+    width = models.IntegerField(default=0)
+    height = models.IntegerField(default=0)
 
     class Meta:
         unique_together = ['artist', 'name', 'info']
