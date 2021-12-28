@@ -12,14 +12,12 @@ services:
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
+      - ~/.aws/:/root/.aws:ro
     ports:
       - "8000:8000"
     environment:
       - POSTGRES_NAME=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - AWS_ACCESS_KEY_ID=AKIAS56ZWH64EA67ISUM
-      - AWS_SECRET_ACCESS_KEY=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
-      - AWS_DEFAULT_REGION=ap-northeast-2
     depends_on:
       - db
