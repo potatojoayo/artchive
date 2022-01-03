@@ -15,9 +15,13 @@ class Command(BaseCommand):
         works = Work.objects.filter(width=0, height=0)
         for i, w in enumerate(works):
             r = requests.get(w.image, stream=True)
-            width, height = get_size(w.image)
-            w.width = width
-            w.height = height
+            width, height = 0, 0
+            try:
+                width, height = get_size(w.image)
+                w.width = width
+                w.height = height
+            except Exception as e:
+                print(e)
             w.save()
             bucket.upload_fileobj(
                 r.raw, (w.name+'_'+w.artist.last_name).replace(' ', '_')+'.jpg')
